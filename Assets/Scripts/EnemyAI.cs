@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     // General
     public float health;
+    public float damage;
 
     // For patrolling
     public Vector3 walkPoint;
