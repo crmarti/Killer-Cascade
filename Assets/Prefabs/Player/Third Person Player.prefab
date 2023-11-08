@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 3443879421241919512}
   - component: {fileID: 181822337410415715}
   - component: {fileID: 8614817196240281719}
+  - component: {fileID: -3166516808288730094}
   m_Layer: 0
   m_Name: Third Person Player
   m_TagString: Player
@@ -268,8 +269,22 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
+  moveDir: {x: 0, y: 0, z: 0}
   speed: 6
   turnSmoothTime: 0.1
   jumpForce: 10
-  dashForce: 35
+--- !u!114 &-3166516808288730094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150077747436008466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fe5708da4f0134099581f4f891d24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 50
+  dashTime: 0.25
   dashCooldown: 0
