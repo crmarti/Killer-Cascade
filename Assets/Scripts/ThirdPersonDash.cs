@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonDash : MonoBehaviour
 {
-    ThirdPersonMovement moveScript;
+    private ThirdPersonMovement moveScript;
 
     public float dashSpeed;
     public float dashTime;
