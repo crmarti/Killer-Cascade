@@ -19,7 +19,7 @@ public class ThirdPersonDash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanDash() && Input.GetKeyDown(KeyCode.LeftShift))
+        if (CanDash() && Input.GetKeyDown(KeyCode.Q))
         {
             StartCoroutine(Dash());
 

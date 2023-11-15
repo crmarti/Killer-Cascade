@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : MovementBaseState
+public class JumpState : MovementBaseState
 {
     public override void EnterState(MovementStateManager movement)
     {
-        movement.currentMoveSpeed = 0;
+        movement.animator.SetBool("isJumping", true);
     }
 
     public override void UpdateState(MovementStateManager movement)
@@ -15,22 +15,22 @@ public class IdleState : MovementBaseState
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                movement.SwitchState(movement.Run);
+                ExitState(movement, movement.Run);
             }
             else
             {
-                movement.SwitchState(movement.Walk);
-            }
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                movement.SwitchState(movement.Crouch);
+                ExitState(movement, movement.Walk);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            movement.SwitchState(movement.Jump);
+            ExitState(movement, movement.Idle);
         }
+    }
+
+    void ExitState(MovementStateManager movement, MovementBaseState state)
+    {
+        movement.animator.SetBool("isJumping", false);
+        movement.SwitchState(state);
     }
 }

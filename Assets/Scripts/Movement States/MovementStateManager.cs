@@ -9,7 +9,10 @@ public class MovementStateManager : MonoBehaviour
     
     // Movement
     float hzInput, vInput;
-    public float moveSpeed = 15f;
+    public float currentMoveSpeed;
+    public float walkSpeed = 8f;
+    public float runSpeed = 12f;
+    public float crouchSpeed = 4f;
     
     // Ground check
     [SerializeField] float groundYOffset;
@@ -26,10 +29,15 @@ public class MovementStateManager : MonoBehaviour
     public WalkState Walk = new WalkState();
     public CrouchState Crouch = new CrouchState();
     public RunState Run = new RunState();
+    public JumpState Jump = new JumpState();
+
+    [HideInInspector]
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         SwitchState(Idle);
     }
@@ -40,7 +48,15 @@ public class MovementStateManager : MonoBehaviour
         GetDirectionAndMove();
         Gravity();
 
+        animator.SetFloat("hzinput", hzInput);
+        animator.SetFloat("vinput", vInput);
+
         currentState.UpdateState(this);
+
+        if (IsGrounded() && currentState == Jump)
+        {
+            DoJump();
+        }
     }
 
     public void SwitchState(MovementBaseState state)
@@ -56,7 +72,7 @@ public class MovementStateManager : MonoBehaviour
 
         moveDir = transform.forward * vInput + transform.right * hzInput;
 
-        controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
+        controller.Move(moveDir.normalized * currentMoveSpeed * Time.deltaTime);
     }
 
     bool IsGrounded()
@@ -83,6 +99,13 @@ public class MovementStateManager : MonoBehaviour
         {
             velocity.y = -2;
         }
+
+        controller.Move(velocity * Time.deltaTime);
+    }
+
+    void DoJump()
+    {
+        velocity.y += 10f * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
     }
