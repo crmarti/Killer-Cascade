@@ -20,6 +20,12 @@ public class RunState : MovementBaseState
         {
             ExitState(movement, movement.Idle);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            movement.previousState = this;
+            ExitState(movement, movement.Jump);
+        }
     }
 
     void ExitState(MovementStateManager movement, MovementBaseState state)

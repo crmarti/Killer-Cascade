@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ThirdPersonDash : MonoBehaviour
 {
-    private ThirdPersonMovement moveScript;
+    private MovementStateManager moveScript;
+    private CharacterController controller;
 
     public float dashSpeed;
     public float dashTime;
@@ -13,7 +14,8 @@ public class ThirdPersonDash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveScript = GetComponent<ThirdPersonMovement>();
+        moveScript = GetComponent<MovementStateManager>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class ThirdPersonDash : MonoBehaviour
 
         while(Time.time < startTime + dashTime)
         {
-            moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+            controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
 
             yield return null;
         }

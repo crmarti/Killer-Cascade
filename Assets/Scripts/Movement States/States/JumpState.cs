@@ -6,31 +6,33 @@ public class JumpState : MovementBaseState
 {
     public override void EnterState(MovementStateManager movement)
     {
-        movement.animator.SetBool("isJumping", true);
+        if (movement.previousState == movement.Idle)
+            movement.animator.SetTrigger("IdleJump");
+        else if (movement.previousState == movement.Walk || movement.previousState == movement.Run)
+            movement.animator.SetTrigger("RunJump");
     }
 
     public override void UpdateState(MovementStateManager movement)
     {
-        if (movement.moveDir.magnitude > 0.1f)
+        if (movement.jumped && movement.IsGrounded())
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            movement.jumped = false;
+
+            if (movement.hzInput == 0 && movement.vInput == 0)
             {
-                ExitState(movement, movement.Run);
-            }
-            else
+                movement.SwitchState(movement.Idle);
+            } else if (Input.GetKey(KeyCode.LeftShift))
             {
-                ExitState(movement, movement.Walk);
+                movement.SwitchState(movement.Run);
+            } else
+            {
+                movement.SwitchState(movement.Walk);
             }
-        }
-        else
-        {
-            ExitState(movement, movement.Idle);
         }
     }
 
     void ExitState(MovementStateManager movement, MovementBaseState state)
     {
-        movement.animator.SetBool("isJumping", false);
-        movement.SwitchState(state);
+
     }
 }

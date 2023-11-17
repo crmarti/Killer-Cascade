@@ -30,6 +30,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] AudioClip secondaryShot;
     AudioSource audioSource;
 
+    WeaponBloom bloom;
     Light muzzleFlashLight;
     float lightIntensity;
     [Header("VFX")]
@@ -41,6 +42,7 @@ public class WeaponManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         aim = GetComponentInParent<AimStateManager>();
         muzzleFlashLight = GetComponentInChildren<Light>();
+        bloom = GetComponent<WeaponBloom>();
         lightIntensity = muzzleFlashLight.intensity;
         fireRateTimer = fireRate;
         secondaryFireRateTimer = secondaryFireRate;
@@ -98,6 +100,7 @@ public class WeaponManager : MonoBehaviour
     {
         fireRateTimer = 0;
         barrelPosition.LookAt(aim.actualAimPosition);
+        barrelPosition.localEulerAngles = bloom.generateBloomAngle(barrelPosition);
 
         audioSource.PlayOneShot(gunShot);
         TriggerMuzzleFlash();

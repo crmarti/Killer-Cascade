@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Unity.VisualScripting.ReorderableList;
 
 public class AimStateManager : MonoBehaviour
 {
     // Aiming state machine
-    AimBaseState currentState;
+    public AimBaseState currentState;
     public HipFireState Hip = new HipFireState();
     public AimState Aim = new AimState();
 
@@ -32,8 +33,22 @@ public class AimStateManager : MonoBehaviour
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
 
+    // Camera swapping/crouching
+    float xFollowPosition;
+    float yFollowPosition, ogYPosition;
+    [SerializeField]
+    float crouchCamHeight = 0.9f;
+    [SerializeField]
+    float swapSpeed;
+    MovementStateManager move;
+
     private void Start()
     {
+        move = GetComponent<MovementStateManager>();
+        xFollowPosition = camFollowPos.localPosition.x;
+        ogYPosition = camFollowPos.localPosition.y;
+        yFollowPosition = ogYPosition;
+
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
         hipFov = vCam.m_Lens.FieldOfView;
         animator = GetComponent<Animator>();
@@ -59,6 +74,8 @@ public class AimStateManager : MonoBehaviour
             actualAimPosition = hit.point;
         }
 
+        MoveCamera();
+
         currentState.UpdateState(this);
     }
 
@@ -72,5 +89,18 @@ public class AimStateManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    void MoveCamera()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+            xFollowPosition = -xFollowPosition;
+
+        if (move.currentState == move.Crouch)
+            yFollowPosition = crouchCamHeight;
+        else yFollowPosition = ogYPosition;
+
+        Vector3 newFollowPos = new Vector3(xFollowPosition, yFollowPosition, camFollowPos.localPosition.z);
+        camFollowPos.localPosition = Vector3.Lerp(camFollowPos.localPosition, newFollowPos, swapSpeed * Time.deltaTime);
     }
 }

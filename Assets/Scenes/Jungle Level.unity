@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213960757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.727, y: 4.005, z: -1.439}
+  m_LocalPosition: {x: 1.727, y: 4.005, z: -1.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,15 +326,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDir: {x: 0, y: 0, z: 0}
+  hzInput: 0
+  vInput: 0
   currentMoveSpeed: 0
-  walkSpeed: 8
-  runSpeed: 12
-  crouchSpeed: 4
+  walkSpeed: 10
+  runSpeed: 18
+  crouchSpeed: 5
+  airSpeed: 5
   groundYOffset: 0.69
   groundMask:
     serializedVersion: 2
     m_Bits: 65
   gravity: -9.81
+  jumpForce: 10
+  jumped: 0
   animator: {fileID: 0}
 --- !u!114 &413508156
 MonoBehaviour:
@@ -362,6 +367,8 @@ MonoBehaviour:
   aimMask:
     serializedVersion: 2
     m_Bits: 65
+  crouchCamHeight: 0.9
+  swapSpeed: 5
 --- !u!143 &413508157
 CharacterController:
   m_ObjectHideFlags: 0
@@ -375,7 +382,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -426,8 +433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fe5708da4f0134099581f4f891d24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 15
-  dashTime: 0.15
+  dashSpeed: 40
+  dashTime: 8
 --- !u!95 &413508161
 Animator:
   serializedVersion: 5
@@ -742,7 +749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.727, y: 5.315, z: -3.4390001}
+  m_LocalPosition: {x: 1.727, y: 5.315, z: -3.8899999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1100,7 +1107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555657289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.727, y: 4.405, z: -3.4390001}
+  m_LocalPosition: {x: 1.727, y: 4.405, z: -3.8899999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1553,7 +1560,7 @@ PrefabInstance:
     - target: {fileID: 8657871563429625568, guid: e5701a6c87787964290248a86d8f85be, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 413508159}
     - target: {fileID: 8657871563429625568, guid: e5701a6c87787964290248a86d8f85be, type: 3}
       propertyPath: timeBetweenWaves
       value: 7
