@@ -29,7 +29,6 @@ public class MovementStateManager : MonoBehaviour
     public WalkState Walk = new WalkState();
     public CrouchState Crouch = new CrouchState();
     public RunState Run = new RunState();
-    public JumpState Jump = new JumpState();
 
     [HideInInspector]
     public Animator animator;
@@ -52,11 +51,6 @@ public class MovementStateManager : MonoBehaviour
         animator.SetFloat("vInput", vInput);
 
         currentState.UpdateState(this);
-
-        if (IsGrounded() && currentState == Jump)
-        {
-            DoJump();
-        }
     }
 
     public void SwitchState(MovementBaseState state)
@@ -99,13 +93,6 @@ public class MovementStateManager : MonoBehaviour
         {
             velocity.y = -2;
         }
-
-        controller.Move(velocity * Time.deltaTime);
-    }
-
-    void DoJump()
-    {
-        velocity.y += 10f * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
     }

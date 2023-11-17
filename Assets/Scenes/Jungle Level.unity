@@ -330,7 +330,7 @@ MonoBehaviour:
   walkSpeed: 8
   runSpeed: 12
   crouchSpeed: 4
-  groundYOffset: 0
+  groundYOffset: 0.69
   groundMask:
     serializedVersion: 2
     m_Bits: 65
@@ -357,6 +357,7 @@ MonoBehaviour:
   currentFov: 0
   fovSmoothSpeed: 10
   aimPos: {fileID: 1813756864}
+  actualAimPosition: {x: 0, y: 0, z: 0}
   aimSmoothSpeed: 20
   aimMask:
     serializedVersion: 2
@@ -374,19 +375,19 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 5.5
+  m_Height: 5.3
   m_Radius: 0.8
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.84, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!33 &413508158
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -897,7 +898,7 @@ GameObject:
   - component: {fileID: 1270632988}
   - component: {fileID: 1270632987}
   - component: {fileID: 1270632986}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,6 +1321,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1886751874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5344862070877831598, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+  m_PrefabInstance: {fileID: 7283884589475875003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2026428738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,6 +1595,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 413508159}
     m_Modifications:
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 6238030018926209781, guid: f954e660c4c887b439942373ca73d0b6, type: 3}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: grenade
+      value: 
+      objectReference: {fileID: 7180474826093858418, guid: 305be5e0fdd8efe4ba012079676d5c7c, type: 3}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: gunShot
+      value: 
+      objectReference: {fileID: 8300000, guid: e3298e35eed19c942b6f4d2d41cd21ba, type: 3}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: barrelPosition
+      value: 
+      objectReference: {fileID: 1886751874}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: bulletVelocity
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: bulletsPerShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: grenadeVelocity
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491078097872502814, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: secondaryFireRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801379043337633681, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: m_Volume
+      value: 0.746
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027553006378972248, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3327919561615909738, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
       propertyPath: m_Weight
       value: 0.5
@@ -1627,7 +1677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8813648630404006260, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.888
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 8813648630404006260, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1670,7 +1720,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1813756864}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1582403153639129903, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc42f12a30416ac41946e6bc93818ee7, type: 3}

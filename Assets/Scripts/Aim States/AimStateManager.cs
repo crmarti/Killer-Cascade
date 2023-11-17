@@ -28,6 +28,7 @@ public class AimStateManager : MonoBehaviour
     public float fovSmoothSpeed = 10f;
 
     public Transform aimPos;
+    [HideInInspector] public Vector3 actualAimPosition;
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
 
@@ -37,6 +38,7 @@ public class AimStateManager : MonoBehaviour
         hipFov = vCam.m_Lens.FieldOfView;
         animator = GetComponent<Animator>();
         SwitchState(Hip);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -54,6 +56,7 @@ public class AimStateManager : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
         {
             aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
+            actualAimPosition = hit.point;
         }
 
         currentState.UpdateState(this);

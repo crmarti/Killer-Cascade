@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     float fireRate;
     float fireRateTimer;
+    [SerializeField]
     float secondaryFireRate;
     float secondaryFireRateTimer;
 
@@ -15,13 +17,33 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform barrelPosition;
     [SerializeField] float bulletVelocity;
+    [SerializeField] int bulletsPerShot;
+    
     AimStateManager aim;
+
+    [Header("Grenade Properties")]
+    [SerializeField] GameObject grenade;
+    [SerializeField] float grenadeVelocity;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip gunShot;
+    [SerializeField] AudioClip secondaryShot;
+    AudioSource audioSource;
+
+    Light muzzleFlashLight;
+    float lightIntensity;
+    [Header("VFX")]
+    [SerializeField] float lightReturnSpeed = 20;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         aim = GetComponentInParent<AimStateManager>();
+        muzzleFlashLight = GetComponentInChildren<Light>();
+        lightIntensity = muzzleFlashLight.intensity;
         fireRateTimer = fireRate;
+        secondaryFireRateTimer = secondaryFireRate;
     }
 
     // Update is called once per frame
@@ -34,6 +56,8 @@ public class WeaponManager : MonoBehaviour
         {
             SecondaryFire();
         }
+
+        muzzleFlashLight.intensity = Mathf.Lerp(muzzleFlashLight.intensity, 0, lightReturnSpeed * Time.deltaTime);
     }
 
     bool ShouldFire()
@@ -73,15 +97,31 @@ public class WeaponManager : MonoBehaviour
     void Fire()
     {
         fireRateTimer = 0;
-        barrelPosition.LookAt(aim.aimPos);
+        barrelPosition.LookAt(aim.actualAimPosition);
 
-        GameObject currentBullet = Instantiate(bullet, barrelPosition.position + new Vector3(1, 0, 5), barrelPosition.rotation);
-        Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
-        rb.AddForce(barrelPosition.forward * bulletVelocity, ForceMode.Impulse);
+        audioSource.PlayOneShot(gunShot);
+        TriggerMuzzleFlash();
+
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            GameObject currentBullet = Instantiate(bullet, barrelPosition.position, barrelPosition.rotation);
+            Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
+            rb.AddForce(barrelPosition.forward * bulletVelocity, ForceMode.Impulse);
+        }
     }
 
     void SecondaryFire()
     {
         secondaryFireRateTimer = 0;
+        barrelPosition.LookAt(aim.actualAimPosition);
+
+        GameObject currentGrenade = Instantiate(grenade, barrelPosition.position, barrelPosition.rotation);
+        Rigidbody rb = currentGrenade.GetComponent<Rigidbody>();
+        rb.AddForce(barrelPosition.forward * grenadeVelocity, ForceMode.Impulse);
+    }
+
+    void TriggerMuzzleFlash()
+    {
+        muzzleFlashLight.intensity = lightIntensity;
     }
 }

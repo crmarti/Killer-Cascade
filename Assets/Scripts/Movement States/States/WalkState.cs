@@ -20,10 +20,6 @@ public class WalkState : MovementBaseState
         {
             ExitState(movement, movement.Crouch);
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ExitState(movement, movement.Jump);
-        }
         else if (movement.moveDir.magnitude < 0.1f)
         {
             ExitState(movement, movement.Idle);

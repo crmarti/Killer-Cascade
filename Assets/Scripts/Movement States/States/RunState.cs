@@ -16,10 +16,6 @@ public class RunState : MovementBaseState
         {
            ExitState(movement, movement.Walk);
         } 
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ExitState(movement, movement.Jump);
-        }
         else if (movement.moveDir.magnitude < 0.1f)
         {
             ExitState(movement, movement.Idle);
