@@ -6,21 +6,23 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField]
     float timeToDestroy;
-    float timer;
+    [SerializeField]
+    int damage;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= timeToDestroy)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, timeToDestroy);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<EnemyAI>())
+        {
+            EnemyAI ai = collision.gameObject.GetComponent<EnemyAI>();
+
+            ai.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
     }
 }

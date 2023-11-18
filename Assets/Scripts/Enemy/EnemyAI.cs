@@ -15,16 +15,18 @@ public class EnemyAI : MonoBehaviour
 
     // For patrolling
     public Vector3 walkPoint;
+    [SerializeField]
     bool walkPointSet;
     public float walkPointRange;
 
     // For Attacking
     public float timeBetweenAttacks;
-    bool hasAttacked;
+    public bool hasAttacked;
 
     // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    public bool isDead;
 
     private void Awake()
     {
@@ -55,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         // Did we reach the walkpoint?
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 0.5f)
         {
             walkPointSet = false;
         }
@@ -89,9 +91,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!hasAttacked)
         {
-            // Attack
-            
-
+            // Attacking
             hasAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -104,11 +104,18 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-
+        if (health > 0)
+        {
+            health -= damage;
+            Debug.Log("hit");
+        }
+        
         if (health <= 0)
         {
-            Invoke(nameof(DestroyEnemy), 0.75f);
+            isDead = true;
+            sightRange = 0;
+            attackRange = 0;
+            Invoke(nameof(DestroyEnemy), 1f);
         }
     }
 
