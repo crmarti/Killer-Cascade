@@ -102,7 +102,7 @@ public class EnemyAI : MonoBehaviour
         hasAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (health > 0)
         {

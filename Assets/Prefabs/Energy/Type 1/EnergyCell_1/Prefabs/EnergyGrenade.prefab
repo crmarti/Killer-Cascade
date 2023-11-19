@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7180474826091860146}
   - component: {fileID: -7826808772899555583}
   - component: {fileID: 7101163926409634738}
-  - component: {fileID: -668952076146081079}
+  - component: {fileID: 7676277512600817560}
   m_Layer: 9
   m_Name: EnergyGrenade
   m_TagString: Untagged
@@ -136,7 +136,7 @@ CapsuleCollider:
   m_Height: 0.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.3, z: 0}
---- !u!114 &-668952076146081079
+--- !u!114 &7676277512600817560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,8 +145,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7180474826093858418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c6f4ded5fdd89f44bf0a26607855ca5, type: 3}
+  m_Script: {fileID: 11500000, guid: d945249d01fd4bc4a8a1a4a17752d47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 3
   damage: 100
+  explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}

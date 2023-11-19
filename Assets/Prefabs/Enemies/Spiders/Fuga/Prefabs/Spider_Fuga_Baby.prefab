@@ -809,7 +809,7 @@ MonoBehaviour:
   walkPointRange: 5
   timeBetweenAttacks: 2
   hasAttacked: 0
-  sightRange: 11
+  sightRange: 20
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0

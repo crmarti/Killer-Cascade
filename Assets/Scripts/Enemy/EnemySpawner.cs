@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     public float timeBetweenWaves = 10f;
     private float waveCountdown;
     private float searchCountdown = 1f;
-    private float minDistance = 15f;
+    private float minDistance = 18f;
     private float maxDistance = 30f;
 
     private void Start()
@@ -40,8 +40,8 @@ public class EnemySpawner : MonoBehaviour
     {
         if (state == SpawnState.WAITING)
         {
-            // Check if any enemies are still alive
-            if (!IsEnemyAlive())
+            // Check if any enemies are still alive or a set time has passed
+            if (!IsEnemyAlive() || waveCountdown <= 0)
             {
                 // Begin a new enemy wave
                 WaveCompleted();
