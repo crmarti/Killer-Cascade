@@ -584,6 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseDamageMultiplier: 1
 --- !u!1 &526559792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1050,10 @@ PrefabInstance:
     - target: {fileID: 4012953845243824, guid: 763aae58be507be4e8fcc96b31c38c88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483287147021666583, guid: 763aae58be507be4e8fcc96b31c38c88, type: 3}
+      propertyPath: powerUpType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1673,7 +1678,7 @@ PrefabInstance:
       objectReference: {fileID: 413508159}
     - target: {fileID: 8657871563429625568, guid: e5701a6c87787964290248a86d8f85be, type: 3}
       propertyPath: timeBetweenWaves
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8657871563429625568, guid: e5701a6c87787964290248a86d8f85be, type: 3}
       propertyPath: waves.Array.data[0].rate

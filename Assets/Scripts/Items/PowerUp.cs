@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneTemplate;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
@@ -27,36 +28,34 @@ public class PowerUp : MonoBehaviour
 
     IEnumerator Pickup(Collider player)
     {
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+
         switch(powerUpType)
         {
             case PowerUpTypes.HEALING:
                 Instantiate(pickupEffect, transform.position, transform.rotation);
 
-                PlayerStats stats = player.GetComponent<PlayerStats>();
                 stats.health += 30;
 
                 Destroy(gameObject);
                 break;
 
             case PowerUpTypes.DAMAGEBOOST:
-                bullet = FindObjectOfType<Bullet>();
-                grenade = FindObjectOfType<Grenade>();
-                
                 Instantiate(pickupEffect, transform.position, transform.rotation);
 
-                GetComponent<MeshRenderer>().enabled = false;
+                foreach (MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
+                {
+                    renderer.enabled = false;
+                }
                 GetComponent<Collider>().enabled = false;
 
-                bullet.damage *= 1.5f;
-                grenade.damage *= 1.5f;
+                stats.baseDamageMultiplier *= 1.5f;
+                
+                yield return new WaitForSeconds(5f);
 
-                yield return new WaitForSeconds(3f);
-
-                bullet.damage /= 1.5f;
-                grenade.damage /= 1.5f;
+                stats.baseDamageMultiplier /= 1.5f;
 
                 Destroy(gameObject);
-
                 break;
 
             case PowerUpTypes.MOVEMENTBOOST:

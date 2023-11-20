@@ -6,7 +6,8 @@ public class PlayerStats : MonoBehaviour
 {
     public int health = 100;
     int maxHealth = 100;
-    
+    public float baseDamageMultiplier = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,7 @@ public class PlayerStats : MonoBehaviour
         {
             health = maxHealth;
         }
+
+
     }
 }

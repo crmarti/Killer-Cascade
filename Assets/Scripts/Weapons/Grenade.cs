@@ -6,9 +6,17 @@ public class Grenade : MonoBehaviour
 {
     [SerializeField]
     float timeToDestroy;
-    public float damage;
+    public float currentDamage;
+    float baseDamage = 100f;
 
+    PlayerStats stats;
     public GameObject explosionEffect;
+
+    private void Start()
+    {
+        stats = FindObjectOfType<PlayerStats>();
+        currentDamage = baseDamage;
+    }
 
     private void Update()
     {
@@ -19,6 +27,15 @@ public class Grenade : MonoBehaviour
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+
+        if (stats.baseDamageMultiplier > 1)
+        {
+            currentDamage *= stats.baseDamageMultiplier;
+        }
+        else if (stats.baseDamageMultiplier == 1)
+        {
+            currentDamage = baseDamage;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +44,7 @@ public class Grenade : MonoBehaviour
         {
             EnemyAI ai = collision.gameObject.GetComponent<EnemyAI>();
 
-            ai.TakeDamage(damage);
+            ai.TakeDamage(currentDamage);
 
             Instantiate(explosionEffect, transform.position, transform.rotation);
 
