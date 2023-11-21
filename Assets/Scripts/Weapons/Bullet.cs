@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     float timeToDestroy;
     public float currentDamage;
-    float baseDamage = 25f;
+    float baseDamage = 30f;
 
     PlayerStats playerStats;
 
@@ -15,14 +15,10 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, timeToDestroy);
         playerStats = FindObjectOfType<PlayerStats>();
-        currentDamage = baseDamage;
-    }
 
-    private void Update()
-    {
         if (playerStats.baseDamageMultiplier > 1)
         {
-            currentDamage *= playerStats.baseDamageMultiplier;
+            currentDamage += (baseDamage * playerStats.baseDamageMultiplier);
         }
         else if (playerStats.baseDamageMultiplier == 1)
         {

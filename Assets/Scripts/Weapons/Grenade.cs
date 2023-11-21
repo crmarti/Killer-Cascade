@@ -15,7 +15,15 @@ public class Grenade : MonoBehaviour
     private void Start()
     {
         stats = FindObjectOfType<PlayerStats>();
-        currentDamage = baseDamage;
+
+        if (stats.baseDamageMultiplier > 1)
+        {
+            currentDamage += (baseDamage * stats.baseDamageMultiplier);
+        }
+        else if (stats.baseDamageMultiplier == 1)
+        {
+            currentDamage = baseDamage;
+        }
     }
 
     private void Update()
@@ -26,15 +34,6 @@ public class Grenade : MonoBehaviour
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
-        }
-
-        if (stats.baseDamageMultiplier > 1)
-        {
-            currentDamage *= stats.baseDamageMultiplier;
-        }
-        else if (stats.baseDamageMultiplier == 1)
-        {
-            currentDamage = baseDamage;
         }
     }
 

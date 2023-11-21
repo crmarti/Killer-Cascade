@@ -15,9 +15,6 @@ public class PowerUp : MonoBehaviour
     public GameObject pickupEffect;
     public PowerUpTypes powerUpType;
 
-    Bullet bullet;
-    Grenade grenade;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -35,7 +32,7 @@ public class PowerUp : MonoBehaviour
             case PowerUpTypes.HEALING:
                 Instantiate(pickupEffect, transform.position, transform.rotation);
 
-                stats.health += 30;
+                stats.currentHealth += 30;
 
                 Destroy(gameObject);
                 break;
@@ -51,7 +48,7 @@ public class PowerUp : MonoBehaviour
 
                 stats.baseDamageMultiplier *= 1.5f;
                 
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(10f);
 
                 stats.baseDamageMultiplier /= 1.5f;
 
@@ -60,6 +57,22 @@ public class PowerUp : MonoBehaviour
 
             case PowerUpTypes.MOVEMENTBOOST:
                 Instantiate(pickupEffect, transform.position, transform.rotation);
+
+                foreach (MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
+                {
+                    renderer.enabled = false;
+                }
+                GetComponent<Collider>().enabled = false;
+
+                player.GetComponent<MovementStateManager>().walkSpeed *= 1.5f;
+                player.GetComponent<MovementStateManager>().runSpeed *= 1.5f;
+                player.GetComponent<MovementStateManager>().crouchSpeed *= 1.5f;
+
+                yield return new WaitForSeconds(6f);
+
+                player.GetComponent<MovementStateManager>().walkSpeed /= 1.5f;
+                player.GetComponent<MovementStateManager>().runSpeed /= 1.5f;
+                player.GetComponent<MovementStateManager>().crouchSpeed /= 1.5f;
 
                 break;
             
