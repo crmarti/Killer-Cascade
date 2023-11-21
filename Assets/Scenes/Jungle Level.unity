@@ -222,7 +222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 28, y: -74}
+  m_AnchoredPosition: {x: 28, y: -73.8}
   m_SizeDelta: {x: 400, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &120082553
@@ -796,7 +796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413508154}
   m_LocalRotation: {x: -0, y: -0.99028903, z: -0, w: 0.13902423}
-  m_LocalPosition: {x: 15, y: 1.1, z: 25}
+  m_LocalPosition: {x: 58, y: 1.1, z: 82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -869,11 +869,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7c2d1839058164eab73a9f40414497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  currentExp: 0
-  currentLevel: 0
   healthBar: {fileID: 1645913028}
   expBar: {fileID: 120082554}
+  currentHealth: 0
+  currentExp: 0
+  requiredExp: 120
+  currentLevel: 1
+  additionMultiplier: 300
+  powerMultiplier: 2
+  divisionMultiplier: 7
   baseDamageMultiplier: 1
 --- !u!1 &526559792
 GameObject:
@@ -1244,7 +1248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: -0.99028903, z: 0, w: 0.13902423}
-  m_LocalPosition: {x: 14.410863, y: 5.505, z: 29.215158}
+  m_LocalPosition: {x: 57.410862, y: 5.505, z: 86.21516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1488,7 +1492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555657289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7270007, y: 4.405, z: -3.8900023}
+  m_LocalPosition: {x: 1.7270011, y: 4.405, z: -3.8900003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
