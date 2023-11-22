@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class PlayerStats : MonoBehaviour
     [Header("Damage")]
     public float baseDamageMultiplier = 1f;
 
+    [Header("UI")]
+    public TextMeshProUGUI healthTxt;
+    public TextMeshProUGUI lvlTxt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,9 @@ public class PlayerStats : MonoBehaviour
         currentLevel = startingLevel;
         healthBar.SetMaxHealth(maxHealth);
         expBar.SetMaxExp(requiredExp);
+
+        healthTxt.text = currentHealth + "/" + maxHealth;
+        lvlTxt.text = "Lvl. " + currentLevel;
     }
 
     // Update is called once per frame
@@ -39,6 +47,10 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
+        }
+        else if (currentHealth < 0)
+        {
+            currentHealth = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -61,6 +73,8 @@ public class PlayerStats : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+
+        healthTxt.text = currentHealth + "/" + maxHealth;
     }
 
     void AddExperience(int exp)
@@ -73,6 +87,7 @@ public class PlayerStats : MonoBehaviour
     void LevelUp()
     {
         currentLevel++;
+        lvlTxt.text = "Lvl. " + currentLevel;
 
         currentExp = currentExp - requiredExp;
         requiredExp = CalculateRequiredXP();
@@ -81,6 +96,7 @@ public class PlayerStats : MonoBehaviour
         
         maxHealth += Mathf.RoundToInt((maxHealth * 0.01f) * ((100 - currentLevel) * 0.1f));
         currentHealth = maxHealth;
+        healthTxt.text = currentHealth + "/" + maxHealth;
 
         baseDamageMultiplier += (0.01f * currentLevel);
     }

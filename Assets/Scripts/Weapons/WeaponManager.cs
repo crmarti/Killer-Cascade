@@ -118,6 +118,8 @@ public class WeaponManager : MonoBehaviour
         secondaryFireRateTimer = 0;
         barrelPosition.LookAt(aim.actualAimPosition);
 
+        audioSource.PlayOneShot(secondaryShot);
+
         GameObject currentGrenade = Instantiate(grenade, barrelPosition.position, barrelPosition.rotation);
         Rigidbody rb = currentGrenade.GetComponent<Rigidbody>();
         rb.AddForce(barrelPosition.forward * grenadeVelocity, ForceMode.Impulse);

@@ -46,7 +46,6 @@ public class Grenade : MonoBehaviour
             ai.TakeDamage(currentDamage);
 
             Instantiate(explosionEffect, transform.position, transform.rotation);
-
             Destroy(gameObject);
         }
     }
