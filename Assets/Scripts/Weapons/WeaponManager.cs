@@ -119,6 +119,7 @@ public class WeaponManager : MonoBehaviour
         barrelPosition.LookAt(aim.actualAimPosition);
 
         audioSource.PlayOneShot(secondaryShot);
+        TriggerMuzzleFlash();
 
         GameObject currentGrenade = Instantiate(grenade, barrelPosition.position, barrelPosition.rotation);
         Rigidbody rb = currentGrenade.GetComponent<Rigidbody>();

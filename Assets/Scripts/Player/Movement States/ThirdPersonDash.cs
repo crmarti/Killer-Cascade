@@ -35,7 +35,7 @@ public class ThirdPersonDash : MonoBehaviour
 
         while(Time.time < startTime + dashTime)
         {
-            controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+            controller.Move(moveScript.moveDir.normalized * dashSpeed * Time.deltaTime);
 
             yield return null;
         }
