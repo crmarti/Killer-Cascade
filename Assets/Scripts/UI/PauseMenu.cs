@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SavePlayer(player.transform, stats);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void LoadMainMenu()

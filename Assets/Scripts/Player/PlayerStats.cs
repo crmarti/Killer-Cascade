@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDataPersistence
 {
     public HealthBar healthBar;
     public ExperienceBar expBar;
@@ -27,6 +27,10 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI healthTxt;
     public TextMeshProUGUI lvlTxt;
 
+    [Header("Position")]
+    public Vector3 playerPos;
+    public Vector3 playerRot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,9 @@ public class PlayerStats : MonoBehaviour
 
         healthTxt.text = currentHealth + "/" + maxHealth;
         lvlTxt.text = "Lvl. " + currentLevel;
+
+        playerPos = this.gameObject.transform.position;
+        playerRot = this.gameObject.transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -95,6 +102,8 @@ public class PlayerStats : MonoBehaviour
         maxHealth += Mathf.RoundToInt((maxHealth * 0.01f) * ((100 - currentLevel) * 0.1f));
         currentHealth = maxHealth;
         healthTxt.text = currentHealth + "/" + maxHealth;
+        healthBar.SetHealth(currentHealth);
+        healthBar.SetMaxHealth(maxHealth);
 
         baseDamageMultiplier += (0.01f * currentLevel);
     }
@@ -109,5 +118,23 @@ public class PlayerStats : MonoBehaviour
         }
 
         return solveForRequiredXp / 4;
+    }
+
+    public void LoadData(SaveData data)
+    {
+        this.currentExp = data.currentExp;
+        this.currentHealth = data.currentHealth;
+        this.currentLevel = data.currentLevel;
+        this.playerPos = data.position;
+        this.playerRot = data.rotation;
+    }
+
+    public void SaveData(ref SaveData data)
+    {
+        data.currentExp = this.currentExp;
+        data.currentHealth = this.currentHealth;
+        data.currentLevel = this.currentLevel;
+        data.position = this.playerPos;
+        data.rotation = this.playerRot;
     }
 }
