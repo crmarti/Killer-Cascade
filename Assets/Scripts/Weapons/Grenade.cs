@@ -11,10 +11,12 @@ public class Grenade : MonoBehaviour
 
     PlayerStats stats;
     public GameObject explosionEffect;
+    private SoundManager soundManager;
 
     private void Start()
     {
         stats = FindObjectOfType<PlayerStats>();
+        soundManager = FindObjectOfType<SoundManager>();
 
         if (stats.baseDamageMultiplier > 1)
         {
@@ -32,6 +34,7 @@ public class Grenade : MonoBehaviour
 
         if (timeToDestroy <= 0)
         {
+            soundManager.Play("GrenadeExplosion");
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
@@ -41,6 +44,7 @@ public class Grenade : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyAI>())
         {
+            soundManager.Play("GrenadeExplosion");
             EnemyAI ai = collision.gameObject.GetComponent<EnemyAI>();
 
             ai.TakeDamage(currentDamage);

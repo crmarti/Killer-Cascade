@@ -25,8 +25,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] GameObject grenade;
     [SerializeField] float grenadeVelocity;
 
-    [Header("Sounds")]
-    [SerializeField] SoundManager soundManager;
+    SoundManager soundManager;
 
     WeaponBloom bloom;
     Light muzzleFlashLight;
@@ -40,6 +39,7 @@ public class WeaponManager : MonoBehaviour
         aim = GetComponentInParent<AimStateManager>();
         muzzleFlashLight = GetComponentInChildren<Light>();
         bloom = GetComponent<WeaponBloom>();
+        soundManager = FindObjectOfType<SoundManager>();
         lightIntensity = muzzleFlashLight.intensity;
         fireRateTimer = fireRate;
         secondaryFireRateTimer = secondaryFireRate;

@@ -34,15 +34,23 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex > 1)
         {
-            Play("MainMenuTheme");
-        }
+            if (SoundIsPlaying("MainMenuTheme"))
+            {
+                Stop("MainMenuTheme");
+                Play("LevelTheme");
+            }
+        } 
         else
         {
-            Play("LevelTheme");
+            if (!SoundIsPlaying("MainMenuTheme"))
+            {
+                Play("MainMenuTheme");
+                Stop("LevelTheme");
+            }
         }
     }
 
@@ -57,5 +65,31 @@ public class SoundManager : MonoBehaviour
         }
 
         s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound: " + name + " not found!");
+            return;
+        }
+
+        s.source.Stop();
+    }
+
+    private bool SoundIsPlaying(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound: " + name + " not found!");
+            return false;
+        }
+
+        return s.source.isPlaying;
     }
 }

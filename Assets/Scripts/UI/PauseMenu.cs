@@ -6,12 +6,6 @@ public class PauseMenu : MonoBehaviour
     public static bool gamePaused = false;
     public GameObject pauseMenuUI;
     public GameObject player;
-    PlayerStats stats;
-
-    private void Start()
-    {
-        stats = player.GetComponent<PlayerStats>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -53,7 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()

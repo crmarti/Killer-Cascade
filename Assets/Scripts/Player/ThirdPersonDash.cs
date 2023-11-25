@@ -5,7 +5,6 @@ public class ThirdPersonDash : MonoBehaviour
 {
     private MovementStateManager moveScript;
     private CharacterController controller;
-    [SerializeField]
     private SoundManager soundManager;
 
     public float dashSpeed;
@@ -17,6 +16,7 @@ public class ThirdPersonDash : MonoBehaviour
     {
         moveScript = GetComponent<MovementStateManager>();
         controller = GetComponent<CharacterController>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame

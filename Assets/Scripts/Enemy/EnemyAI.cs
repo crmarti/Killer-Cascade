@@ -115,7 +115,7 @@ public class EnemyAI : MonoBehaviour
             isDead = true;
             sightRange = 0;
             attackRange = 0;
-            Invoke(nameof(DestroyEnemy), 1f);
+            Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
 
