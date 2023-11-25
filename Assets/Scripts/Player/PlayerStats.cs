@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerStats : MonoBehaviour, IDataPersistence
@@ -136,5 +137,6 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         data.currentLevel = this.currentLevel;
         data.position = this.playerPos;
         data.rotation = this.playerRot;
+        data.levelIndex = SceneManager.GetActiveScene().buildIndex;
     }
 }

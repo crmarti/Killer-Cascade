@@ -26,9 +26,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] float grenadeVelocity;
 
     [Header("Sounds")]
-    [SerializeField] AudioClip gunShot;
-    [SerializeField] AudioClip secondaryShot;
-    AudioSource audioSource;
+    [SerializeField] SoundManager soundManager;
 
     WeaponBloom bloom;
     Light muzzleFlashLight;
@@ -39,7 +37,6 @@ public class WeaponManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         aim = GetComponentInParent<AimStateManager>();
         muzzleFlashLight = GetComponentInChildren<Light>();
         bloom = GetComponent<WeaponBloom>();
@@ -102,7 +99,7 @@ public class WeaponManager : MonoBehaviour
         barrelPosition.LookAt(aim.actualAimPosition);
         barrelPosition.localEulerAngles = bloom.generateBloomAngle(barrelPosition);
 
-        audioSource.PlayOneShot(gunShot);
+        soundManager.Play("LaserShot");
         TriggerMuzzleFlash();
 
         for (int i = 0; i < bulletsPerShot; i++)
@@ -118,7 +115,7 @@ public class WeaponManager : MonoBehaviour
         secondaryFireRateTimer = 0;
         barrelPosition.LookAt(aim.actualAimPosition);
 
-        audioSource.PlayOneShot(secondaryShot);
+        soundManager.Play("GrenadeLaunch");
         TriggerMuzzleFlash();
 
         GameObject currentGrenade = Instantiate(grenade, barrelPosition.position, barrelPosition.rotation);

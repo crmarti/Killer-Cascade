@@ -22,7 +22,6 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
 
-
     private void Awake()
     {
         if (instance != null)
@@ -118,5 +117,10 @@ public class DataPersistenceManager : MonoBehaviour
     public bool HasGameData()
     {
         return this.saveData != null;
+    }
+
+    public SaveData getSaveData()
+    {
+        return this.saveData;
     }
 }

@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         DisableAllButtons();
         DataPersistenceManager.instance.LoadGame();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(DataPersistenceManager.instance.getSaveData().levelIndex);
     }
 
     public void QuitGame()
