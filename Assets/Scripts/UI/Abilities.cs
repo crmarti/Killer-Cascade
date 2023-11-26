@@ -21,10 +21,14 @@ public class Abilities : MonoBehaviour
     public float dashCooldown = 5f;
     bool dashOnCooldown = false;
     public KeyCode dash;
+
+    [Header("Audio")]
+    private SoundManager soundManager;
     
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         rifle.fillAmount = 0;
         grenadeAbility.fillAmount = 0;
         dashAbility.fillAmount = 0;
@@ -74,6 +78,7 @@ public class Abilities : MonoBehaviour
             {
                 grenadeAbility.fillAmount = 0;
                 grenadeOnCooldown = false;
+                soundManager.Play("GrenadeReload");
             }
         }
     }
@@ -94,6 +99,7 @@ public class Abilities : MonoBehaviour
             {
                 dashAbility.fillAmount = 0;
                 dashOnCooldown = false;
+                soundManager.Play("DashReady");
             }
         }
     }
