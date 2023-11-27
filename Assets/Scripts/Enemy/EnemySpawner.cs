@@ -28,8 +28,8 @@ public class EnemySpawner : MonoBehaviour
     public float timeBetweenWaves = 10f;
     private float waveCountdown;
     private float searchCountdown = 1f;
-    private float minDistance = 18f;
-    private float maxDistance = 30f;
+    private float minDistance = 20f;
+    private float maxDistance = 40f;
 
     private void Awake()
     {
