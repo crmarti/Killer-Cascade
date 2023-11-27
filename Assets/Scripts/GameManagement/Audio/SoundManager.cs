@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 public class SoundManager : MonoBehaviour
 {
@@ -36,12 +37,20 @@ public class SoundManager : MonoBehaviour
 
     public void Update()
     {
+        int currentLevelThemeIndex = SceneManager.GetActiveScene().buildIndex - 1;
+        int previousLevelThemeIndex = SceneManager.GetActiveScene().buildIndex - 2;
+
         if (SceneManager.GetActiveScene().buildIndex > 1)
         {
             if (SoundIsPlaying("MainMenuTheme"))
             {
                 Stop("MainMenuTheme");
-                Play("LevelTheme");
+                Play("Level" + currentLevelThemeIndex + "Theme");
+            }
+            else if (SoundIsPlaying("Level" + (SceneManager.GetActiveScene().buildIndex - 2) + "Theme"))
+            {
+                Stop("Level" + previousLevelThemeIndex + "Theme");
+                Play("Level" + currentLevelThemeIndex + "Theme");
             }
         } 
         else
@@ -49,7 +58,10 @@ public class SoundManager : MonoBehaviour
             if (!SoundIsPlaying("MainMenuTheme"))
             {
                 Play("MainMenuTheme");
-                Stop("LevelTheme");
+                for (int i = 1; i <= 3; i++)
+                {
+                    Stop("Level" + i + "Theme");
+                }
             }
         }
     }

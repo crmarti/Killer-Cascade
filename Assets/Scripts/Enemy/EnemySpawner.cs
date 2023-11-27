@@ -31,6 +31,11 @@ public class EnemySpawner : MonoBehaviour
     private float minDistance = 18f;
     private float maxDistance = 30f;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
         waveCountdown = timeBetweenWaves;

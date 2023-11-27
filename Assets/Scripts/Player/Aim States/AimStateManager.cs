@@ -25,7 +25,7 @@ public class AimStateManager : MonoBehaviour
     [HideInInspector] public float currentFov;
     public float fovSmoothSpeed = 10f;
 
-    public Transform aimPos;
+    Transform aimPos;
     [HideInInspector] public Vector3 actualAimPosition;
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
@@ -45,6 +45,7 @@ public class AimStateManager : MonoBehaviour
         xFollowPosition = camFollowPos.localPosition.x;
         ogYPosition = camFollowPos.localPosition.y;
         yFollowPosition = ogYPosition;
+        aimPos = GameObject.FindGameObjectWithTag("AimPos").transform;
 
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
         hipFov = vCam.m_Lens.FieldOfView;

@@ -1569,7 +1569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -217}
+  m_AnchoredPosition: {x: 459.7, y: -253.1}
   m_SizeDelta: {x: 208, y: 52.75}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1231710772
@@ -2669,6 +2669,7 @@ GameObject:
   - component: {fileID: 1404961681}
   - component: {fileID: 1404961680}
   - component: {fileID: 1404961679}
+  - component: {fileID: 1404961682}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2750,6 +2751,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1404961682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404961678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9a3b2aa18847e49b9769d7408d5b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489926753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,7 +2957,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "- Zoom Rifle:\n    Right Mouse\n\n- Crouch:\n    C\n\n- Shoulder Swap:\n   
-    Left Alt\n\n- Tab:\n     View\n     achievements"
+    Left Alt\n\n- Run:\n    Left Shift\n\n- Tab:\n    Achievements"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cab700811daa0de4eb472d946322d276, type: 2}
   m_sharedMaterial: {fileID: -5495865910683824932, guid: cab700811daa0de4eb472d946322d276, type: 2}
@@ -3937,94 +3950,114 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.size
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[1].clip
       value: 
       objectReference: {fileID: 8300000, guid: f12148b2438a8674f9fed21dbfc61c07, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[1].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[1].name
-      value: LevelTheme
+      value: Level1Theme
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 0f07dbc4e2dbd6e47b2a8fb492cf3544, type: 3}
+      objectReference: {fileID: 8300000, guid: 4321d3c37eed9024b94245e5ce51b4de, type: 3}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[2].name
-      value: ButtonHover
+      value: Level2Theme
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: ae68e7c08d78c4543bf11d67f652494b, type: 3}
+      objectReference: {fileID: 8300000, guid: 7221ab35308e28a4c9c15a1a2975341a, type: 3}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[3].loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[3].name
-      value: ButtonClick
+      value: Level3Theme
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: c649abd1ee609ce41b58bdc33eaefed2, type: 3}
+      objectReference: {fileID: 8300000, guid: 0f07dbc4e2dbd6e47b2a8fb492cf3544, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[4].name
-      value: QuitButton
+      value: ButtonHover
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 259f0499fc595454fa893f636413fbdc, type: 3}
+      objectReference: {fileID: 8300000, guid: ae68e7c08d78c4543bf11d67f652494b, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[5].name
-      value: Dash
+      value: ButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: e3298e35eed19c942b6f4d2d41cd21ba, type: 3}
+      objectReference: {fileID: 8300000, guid: c649abd1ee609ce41b58bdc33eaefed2, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[6].name
-      value: LaserShot
+      value: QuitButton
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[7].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 23d80b5297162e9459fea98d1bec36f4, type: 3}
+      objectReference: {fileID: 8300000, guid: 259f0499fc595454fa893f636413fbdc, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[7].name
-      value: GrenadeLaunch
+      value: Dash
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[8].clip
       value: 
-      objectReference: {fileID: 8300000, guid: c11fb3b3ced9fff40a645a5a5d1157a1, type: 3}
+      objectReference: {fileID: 8300000, guid: e3298e35eed19c942b6f4d2d41cd21ba, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[8].name
-      value: GrenadeReload
+      value: LaserShot
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[9].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9f45e6a5f5cd816458d7c9359c903f4b, type: 3}
+      objectReference: {fileID: 8300000, guid: 23d80b5297162e9459fea98d1bec36f4, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[9].name
-      value: GrenadeExplosion
+      value: GrenadeLaunch
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[10].clip
       value: 
-      objectReference: {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
+      objectReference: {fileID: 8300000, guid: c11fb3b3ced9fff40a645a5a5d1157a1, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[10].name
-      value: DashReady
+      value: GrenadeReload
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[11].clip
       value: 
-      objectReference: {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
+      objectReference: {fileID: 8300000, guid: 9f45e6a5f5cd816458d7c9359c903f4b, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[11].name
+      value: GrenadeExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[12].name
       value: DashReady
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
@@ -4064,12 +4097,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[12].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[1].volume
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[3].volume
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[4].volume
@@ -4101,6 +4142,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[11].volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[12].volume
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6831202084090849682, guid: de67faf0ceb696044b062a9e02811baf, type: 3}

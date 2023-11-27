@@ -32,6 +32,11 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
     public Vector3 playerPos;
     public Vector3 playerRot;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +47,14 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
 
         healthTxt.text = currentHealth + "/" + maxHealth;
         lvlTxt.text = "Lvl. " + currentLevel;
-
-        playerPos = this.gameObject.transform.position;
-        playerRot = this.gameObject.transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerPos = this.gameObject.transform.position;
+        playerRot = this.gameObject.transform.rotation.eulerAngles;
+
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
