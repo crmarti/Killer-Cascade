@@ -112,4 +112,9 @@ public class MovementStateManager : MonoBehaviour
     public void JumpForce() => velocity.y += jumpForce;
 
     public void Jumped() => jumped = true;
+
+    public void TeleportTo(Transform destination)
+    {
+        transform.position = destination.position;
+    }
 }

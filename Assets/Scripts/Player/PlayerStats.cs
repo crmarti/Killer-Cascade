@@ -79,7 +79,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
@@ -88,7 +88,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         healthTxt.text = currentHealth + "/" + maxHealth;
     }
 
-    void AddExperience(int exp)
+    public void AddExperience(int exp)
     {
         currentExp += exp;
 
@@ -143,5 +143,20 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         data.position = this.playerPos;
         data.rotation = this.playerRot;
         data.levelIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<EnemyAI>())
+        {
+            EnemyAI ai = other.gameObject.GetComponent<EnemyAI>();
+
+            TakeDamage(ai.damage);
+        }
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

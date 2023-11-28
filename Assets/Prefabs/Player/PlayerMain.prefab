@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 7279275917115690616}
   - component: {fileID: 4657237711459249901}
   - component: {fileID: 1426430045991768686}
+  - component: {fileID: -5495545987668644439}
   - component: {fileID: 2405403507497790077}
   - component: {fileID: 7613489828956791555}
   m_Layer: 8
@@ -199,7 +200,6 @@ MonoBehaviour:
   hipFov: 0
   currentFov: 0
   fovSmoothSpeed: 10
-  aimPos: {fileID: 0}
   actualAimPosition: {x: 0, y: 0, z: 0}
   aimSmoothSpeed: 20
   aimMask:
@@ -275,6 +275,19 @@ MonoBehaviour:
   lvlTxt: {fileID: 0}
   playerPos: {x: 0, y: 0, z: 0}
   playerRot: {x: 0, y: 0, z: 0}
+--- !u!114 &-5495545987668644439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070520360272308389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72c123667f5cea41bdaae5a33ef9fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTeleport: 1
 --- !u!95 &2405403507497790077
 Animator:
   serializedVersion: 5

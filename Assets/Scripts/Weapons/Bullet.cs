@@ -26,11 +26,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<EnemyAI>())
         {
-            EnemyAI ai = collision.gameObject.GetComponent<EnemyAI>();
+            EnemyAI ai = other.gameObject.GetComponent<EnemyAI>();
 
             ai.TakeDamage(currentDamage);
         }

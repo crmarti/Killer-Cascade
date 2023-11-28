@@ -6,12 +6,14 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Transform player;
+    public GameObject player;
+    public List<GameObject> crates;
     public LayerMask isGround, isPlayer;
 
     // General
     public float health;
-    public float damage;
+    public int damage;
+    public int experience;
 
     // For patrolling
     public Vector3 walkPoint;
@@ -30,7 +32,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -69,7 +71,7 @@ public class EnemyAI : MonoBehaviour
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        walkPoint = new Vector3(transform.position.x + randomX, -transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, isGround))
         {
@@ -79,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.SetDestination(player.transform.position);
     }
 
     private void AttackPlayer()
@@ -87,7 +89,7 @@ public class EnemyAI : MonoBehaviour
         // Enemy doesn't move while attacking
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        transform.LookAt(player.transform);
 
         if (!hasAttacked)
         {
@@ -121,7 +123,29 @@ public class EnemyAI : MonoBehaviour
 
     public void DestroyEnemy()
     {
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        stats.AddExperience(experience);
+
+        int spawnChance = Random.Range(1, 100);
+        SpawnCrate(spawnChance);
+
         Destroy(gameObject);
+    }
+
+    public void SpawnCrate(int spawnChance)
+    {
+        if (spawnChance <= 33)
+        {
+            Instantiate(crates[0], gameObject.transform);
+        }
+        else if (spawnChance > 33 && spawnChance <= 66)
+        {
+            Instantiate(crates[1], gameObject.transform);
+        }
+        else if (spawnChance > 66 && spawnChance <= 100)
+        {
+            Instantiate(crates[2], gameObject.transform);
+        }
     }
 
     private void OnDrawGizmosSelected()

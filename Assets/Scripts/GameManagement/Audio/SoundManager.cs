@@ -47,7 +47,7 @@ public class SoundManager : MonoBehaviour
                 Stop("MainMenuTheme");
                 Play("Level" + currentLevelThemeIndex + "Theme");
             }
-            else if (SoundIsPlaying("Level" + (SceneManager.GetActiveScene().buildIndex - 2) + "Theme"))
+            else if (previousLevelThemeIndex != 0 && SoundIsPlaying("Level" + previousLevelThemeIndex + "Theme"))
             {
                 Stop("Level" + previousLevelThemeIndex + "Theme");
                 Play("Level" + currentLevelThemeIndex + "Theme");
@@ -72,7 +72,7 @@ public class SoundManager : MonoBehaviour
         
         if (s == null)
         {
-            Debug.Log("Sound: " + name + " not found!");
+            Debug.Log("Sound: " + name + " could not be played!");
             return;
         }
 
@@ -85,7 +85,7 @@ public class SoundManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound: " + name + " not found!");
+            Debug.Log("Sound: " + name + " could not be stopped!");
             return;
         }
 

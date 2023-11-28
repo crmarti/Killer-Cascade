@@ -10,8 +10,11 @@ public class SkipLevel : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerStats = player.GetComponent<PlayerStats>();
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerStats = player.GetComponent<PlayerStats>();
+        }
     }
 
     // Update is called once per frame

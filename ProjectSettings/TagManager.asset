@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - AimPos
+  - MovementCrate
+  - HealthCrate
+  - DamageCrate
   layers:
   - Default
   - TransparentFX

@@ -40,12 +40,12 @@ public class Grenade : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<EnemyAI>())
+        if (other.gameObject.GetComponent<EnemyAI>())
         {
             soundManager.Play("GrenadeExplosion");
-            EnemyAI ai = collision.gameObject.GetComponent<EnemyAI>();
+            EnemyAI ai = other.gameObject.GetComponent<EnemyAI>();
 
             ai.TakeDamage(currentDamage);
 

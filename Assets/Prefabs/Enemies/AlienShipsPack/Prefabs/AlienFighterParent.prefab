@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6818550262344589228}
   - component: {fileID: 1483421736751789453}
   - component: {fileID: 2263344791892957621}
+  - component: {fileID: 4798929364941016250}
+  - component: {fileID: 2013979921447491598}
   m_Layer: 0
   m_Name: AlienFighterParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +72,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1483421736751789453}
   player: {fileID: 0}
+  crates:
+  - {fileID: 1925570936046650, guid: 65943d4371e599144912dcd05d5e9c4d, type: 3}
+  - {fileID: 1656747844427808, guid: 763aae58be507be4e8fcc96b31c38c88, type: 3}
+  - {fileID: 1156785199505330, guid: 4f19cb45b6027fd46b768dae90e31858, type: 3}
   isGround:
     serializedVersion: 2
     m_Bits: 64
@@ -78,6 +84,7 @@ MonoBehaviour:
     m_Bits: 256
   health: 80
   damage: 10
+  experience: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 0
@@ -88,6 +95,48 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   isDead: 0
+--- !u!135 &4798929364941016250
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561720309312012901}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 7.33, z: 0}
+--- !u!135 &2013979921447491598
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561720309312012901}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 7.33, z: 0}
 --- !u!1001 &5347314787280063321
 PrefabInstance:
   m_ObjectHideFlags: 0
