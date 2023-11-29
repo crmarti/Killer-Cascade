@@ -147,15 +147,23 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyAI>())
+        Debug.Log("Trigger entered!");
+        if (other.CompareTag("Enemy"))
         {
             EnemyAI ai = other.gameObject.GetComponent<EnemyAI>();
+
+            TakeDamage(ai.damage);
+        }
+        else if (other.gameObject.GetComponent<BossAI>()) 
+        { 
+            BossAI ai = other.gameObject.GetComponent<BossAI>();
 
             TakeDamage(ai.damage);
         }
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Destroy(gameObject);
         }
     }

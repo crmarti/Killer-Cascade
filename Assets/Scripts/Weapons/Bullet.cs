@@ -35,6 +35,20 @@ public class Bullet : MonoBehaviour
             ai.TakeDamage(currentDamage);
         }
 
+        if (other.gameObject.GetComponent<FlyingAI>())
+        {
+            FlyingAI ai = other.gameObject.GetComponent<FlyingAI>();
+
+            ai.TakeDamage(currentDamage);
+        }
+
+        if (other.gameObject.GetComponent<BossAI>())
+        {
+            BossAI ai = other.gameObject.GetComponent<BossAI>();
+
+            ai.TakeDamage(currentDamage);
+        }
+
         Destroy(gameObject);
     }
 }

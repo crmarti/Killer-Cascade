@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public GameObject player;
+    private NavMeshAgent agent;
+    private GameObject player;
+    private Animator animator;
     public List<GameObject> crates;
     public LayerMask isGround, isPlayer;
 
@@ -30,10 +31,21 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public bool isDead;
 
+    private float spawnDistance = 2f;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        
+        if (GetComponentInChildren<Animator>())
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        else if (GetComponent<Animator>())
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     private void Update()
@@ -90,11 +102,13 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
 
         transform.LookAt(player.transform);
+        animator.SetTrigger("Attack");
 
         if (!hasAttacked)
         {
             // Attacking
             hasAttacked = true;
+            animator.ResetTrigger("Attack");
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -108,6 +122,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (health > 0)
         {
+            animator.SetTrigger("Hit");
             health -= damage;
             Debug.Log("hit");
         }
@@ -117,7 +132,8 @@ public class EnemyAI : MonoBehaviour
             isDead = true;
             sightRange = 0;
             attackRange = 0;
-            Invoke(nameof(DestroyEnemy), 0.5f);
+            animator.SetBool("IsDead", true);
+            Invoke(nameof(DestroyEnemy), 1f);
         }
     }
 
@@ -134,17 +150,19 @@ public class EnemyAI : MonoBehaviour
 
     public void SpawnCrate(int spawnChance)
     {
-        if (spawnChance <= 33)
+        Vector3 spawnPos = transform.position + transform.forward * spawnDistance;
+
+        if (spawnChance <= 18)
         {
-            Instantiate(crates[0], gameObject.transform);
+            Instantiate(crates[0], spawnPos, Quaternion.identity);
         }
-        else if (spawnChance > 33 && spawnChance <= 66)
+        else if (spawnChance > 18 && spawnChance <= 28)
         {
-            Instantiate(crates[1], gameObject.transform);
+            Instantiate(crates[1], spawnPos, Quaternion.identity);
         }
-        else if (spawnChance > 66 && spawnChance <= 100)
+        else if (spawnChance > 28 && spawnChance <= 38)
         {
-            Instantiate(crates[2], gameObject.transform);
+            Instantiate(crates[2], spawnPos, Quaternion.identity);
         }
     }
 

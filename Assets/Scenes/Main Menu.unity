@@ -3950,7 +3950,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[1].clip
@@ -4039,25 +4039,33 @@ PrefabInstance:
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[10].clip
       value: 
-      objectReference: {fileID: 8300000, guid: c11fb3b3ced9fff40a645a5a5d1157a1, type: 3}
+      objectReference: {fileID: 8300000, guid: 3fb5208c19ed6c34fba23b1d81a67377, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[10].name
-      value: GrenadeReload
+      value: ItemPickup
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[11].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9f45e6a5f5cd816458d7c9359c903f4b, type: 3}
+      objectReference: {fileID: 8300000, guid: c11fb3b3ced9fff40a645a5a5d1157a1, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[11].name
-      value: GrenadeExplosion
+      value: GrenadeReload
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[12].clip
       value: 
-      objectReference: {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
+      objectReference: {fileID: 8300000, guid: 9f45e6a5f5cd816458d7c9359c903f4b, type: 3}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[12].name
+      value: GrenadeExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[13].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[13].name
       value: DashReady
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
@@ -4098,6 +4106,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[12].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[13].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
@@ -4146,6 +4158,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
       propertyPath: sounds.Array.data[12].volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321905133219557649, guid: de67faf0ceb696044b062a9e02811baf, type: 3}
+      propertyPath: sounds.Array.data[13].volume
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6831202084090849682, guid: de67faf0ceb696044b062a9e02811baf, type: 3}

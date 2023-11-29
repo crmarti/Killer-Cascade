@@ -52,5 +52,27 @@ public class Grenade : MonoBehaviour
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+
+        if (other.gameObject.GetComponent<FlyingAI>()) 
+        {
+            soundManager.Play("GrenadeExplosion");
+            FlyingAI ai = other.gameObject.GetComponent<FlyingAI>();
+
+            ai.TakeDamage(currentDamage);
+
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.GetComponent<BossAI>())
+        {
+            soundManager.Play("GrenadeExplosion");
+            BossAI ai = other.gameObject.GetComponent<BossAI>();
+
+            ai.TakeDamage(currentDamage);
+
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

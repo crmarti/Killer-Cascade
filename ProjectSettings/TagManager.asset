@@ -9,6 +9,9 @@ TagManager:
   - MovementCrate
   - HealthCrate
   - DamageCrate
+  - Teleporter
+  - Boss
+  - Spawner
   layers:
   - Default
   - TransparentFX

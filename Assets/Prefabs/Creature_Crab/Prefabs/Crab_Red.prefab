@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 8466900269683015192}
   - component: {fileID: 4165830779174395587}
   - component: {fileID: -1007520788875858410}
-  - component: {fileID: 1287837205523024789}
+  - component: {fileID: -5437009744727608280}
   m_Layer: 0
   m_Name: Crab_Red
   m_TagString: Enemy
@@ -688,8 +688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67eb6e3c903a69d45a260f7d5207d7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 8466900269683015192}
-  player: {fileID: 0}
   crates:
   - {fileID: 1925570936046650, guid: 65943d4371e599144912dcd05d5e9c4d, type: 3}
   - {fileID: 1656747844427808, guid: 763aae58be507be4e8fcc96b31c38c88, type: 3}
@@ -701,8 +699,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   health: 110
-  damage: 15
-  experience: 20
+  damage: 20
+  experience: 25
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 0
@@ -736,7 +734,7 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!136 &1287837205523024789
+--- !u!136 &-5437009744727608280
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -755,7 +753,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}

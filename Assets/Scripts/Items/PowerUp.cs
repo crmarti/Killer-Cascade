@@ -14,6 +14,12 @@ public class PowerUp : MonoBehaviour
 
     public GameObject pickupEffect;
     public PowerUpTypes powerUpType;
+    private SoundManager soundManager;
+
+    private void Start()
+    {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +37,7 @@ public class PowerUp : MonoBehaviour
         {
             case PowerUpTypes.HEALING:
                 Instantiate(pickupEffect, transform.position, transform.rotation);
+                soundManager.Play("ItemPickup");
 
                 stats.currentHealth += 30;
 
@@ -39,6 +46,7 @@ public class PowerUp : MonoBehaviour
 
             case PowerUpTypes.DAMAGEBOOST:
                 Instantiate(pickupEffect, transform.position, transform.rotation);
+                soundManager.Play("ItemPickup");
 
                 foreach (MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
                 {
@@ -57,6 +65,7 @@ public class PowerUp : MonoBehaviour
 
             case PowerUpTypes.MOVEMENTBOOST:
                 Instantiate(pickupEffect, transform.position, transform.rotation);
+                soundManager.Play("ItemPickup");
 
                 foreach (MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
                 {
