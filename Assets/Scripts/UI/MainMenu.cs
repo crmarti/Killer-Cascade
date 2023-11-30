@@ -9,8 +9,13 @@ public class MainMenu : MonoBehaviour
     public Button loadGameButton;
     public Button newGameButton;
 
-    private void Start()
+    private void Awake()
     {
+        Time.timeScale = 1.0f;
+    }
+
+    private void Start()
+    {   
         if (!DataPersistenceManager.instance.HasGameData()) {
             loadGameButton.interactable = false;
         }

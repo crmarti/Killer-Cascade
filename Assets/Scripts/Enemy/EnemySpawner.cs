@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    public Transform player;
+    Transform player;
     private SpawnState state = SpawnState.COUNTING;
 
     private int nextWave = 0;
@@ -31,14 +31,10 @@ public class EnemySpawner : MonoBehaviour
     private float minDistance = 20f;
     private float maxDistance = 40f;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
-
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()

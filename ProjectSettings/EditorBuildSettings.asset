@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Plains Level.unity
     guid: 00f29e3873d00a74e895fb8f1029a176
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 4539013bd20f48d4dbdde75808180bf7
   m_configObjects: {}

@@ -47,6 +47,7 @@ public class BossAI : MonoBehaviour
     {
         agent.SetDestination(player.transform.position);
         animator.SetBool("IsMoving", true);
+        animator.SetBool("Attack", false);
     }
 
     private void AttackPlayer()
@@ -55,10 +56,12 @@ public class BossAI : MonoBehaviour
 
         transform.LookAt(player.transform);
 
+        animator.SetBool("IsMoving", false);
+
         if (!hasAttacked)
         {
             hasAttacked = true;
-            animator.SetBool("IsAttack", true);
+            animator.SetBool("Attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -66,7 +69,6 @@ public class BossAI : MonoBehaviour
     private void ResetAttack()
     {
         hasAttacked = false;
-        animator.SetBool("IsAttack", false);
     }
 
     public void TakeDamage(float damage)

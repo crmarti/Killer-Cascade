@@ -12,6 +12,7 @@ TagManager:
   - Teleporter
   - Boss
   - Spawner
+  - WinScreen
   layers:
   - Default
   - TransparentFX

@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     // For Attacking
     public float timeBetweenAttacks;
-    public bool hasAttacked;
+    public bool hasAttacked = false;
 
     // States
     public float sightRange, attackRange;
@@ -94,6 +94,8 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.transform.position);
+        animator.SetBool("IsMoving", true);
+        animator.SetBool("Attack", false);
     }
 
     private void AttackPlayer()
@@ -102,19 +104,20 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
 
         transform.LookAt(player.transform);
-        animator.SetTrigger("Attack");
+        animator.SetBool("Attack", true);
 
         if (!hasAttacked)
         {
             // Attacking
             hasAttacked = true;
-            animator.ResetTrigger("Attack");
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
     private void ResetAttack()
     {
+        Debug.Log("Resetting attack");
+        animator.SetBool("Attack", false);
         hasAttacked = false;
     }
 
@@ -135,6 +138,8 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool("IsDead", true);
             Invoke(nameof(DestroyEnemy), 1f);
         }
+
+        animator.ResetTrigger("Hit");
     }
 
     public void DestroyEnemy()

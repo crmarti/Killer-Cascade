@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
     [Header("UI")]
     public TextMeshProUGUI healthTxt;
     public TextMeshProUGUI lvlTxt;
+    public GameObject loseScreen;
 
     [Header("Position")]
     public Vector3 playerPos;
@@ -164,6 +165,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            loseScreen.SetActive(true);
             Destroy(gameObject);
         }
     }
